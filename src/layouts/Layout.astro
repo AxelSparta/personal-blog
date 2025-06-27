@@ -1,21 +1,30 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Axel Sparta Blog</title>
+		<meta
+			name="description"
+			content="Este es el blog de Axel Sparta donde podrás ver actualizaciones de lo que voy estudiando y voy a estudiar todas las semanas, también puedes ver proyectos y tutoriales creados por mi."
+		/>
+		<meta
+			name="keywords"
+			content="Axel Sparta blog, Axel Sparta, blog, Axel Sparta blog, Axel Sparta blog, Axel Sparta blog"
+		/>
 		<ClientRouter />
 	</head>
 	<body class="text-slate-950 dark:text-slate-50">
 		<div
-			class="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)] dark:bg-neutral-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+			class="fixed top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)] dark:bg-neutral-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
 		>
 		</div>
 		<div class="container mx-auto">
@@ -26,12 +35,6 @@ import Navbar from "../components/Navbar.astro";
 </html>
 
 <style is:global>
-	@import "tailwindcss";
-	@custom-variant dark (&:where(.dark, .dark *));
-
-	:root {
-		color-scheme: dark light;
-	}
 	html {
 		font-family: "Onest Variable", system-ui, sans-serif;
 		scroll-behavior: smooth;

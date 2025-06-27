@@ -12,8 +12,3 @@ export const myCollections = {
         }),
     }),
 };
-
-
-export const collections = {
-  'blog': myCollections.blogs,
-}
