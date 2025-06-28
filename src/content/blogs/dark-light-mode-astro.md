@@ -1,11 +1,11 @@
 ---
 # FRONT MATTER: info extra que se puede poner dentro del md
 title: Blog de bienvenida
-img: /bienvenida.png
+img: /dark-light-mode.webp
 readtime: 15
 description: Este es el blog personal de Axel. Aquí podrás encontrar mis notas, proyectos y reflexiones sobre el mundo de la programación y el desarrollo web.
 author: Axel Sparta
-date: 2025-06-26
+date: 2025-06-27
 ---
 
 # Bienvenida
@@ -22,5 +22,7 @@ Para la creación de este blog utilicé Astro, que es un framework para crear si
 
 Durante la semana he repasado las bases y fundamentos de Astro a medida que iba construyendo el blog. También he repasado las bases de Nodejs...
 A continuación quiero detallar algunos conceptos aprendidos que creo que son importantes para entender el funcionamiento tando de Astro como de Nodejs.
+```astro
 
+```
 ### SSG: Static Site Generation

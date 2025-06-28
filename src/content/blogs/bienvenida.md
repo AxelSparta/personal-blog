@@ -1,14 +1,14 @@
 ---
 # FRONT MATTER: info extra que se puede poner dentro del md
 title: Blog de bienvenida
-img: /bienvenida.png
+img: /bienvenida.webp
 readtime: 15
 description: Este es el blog personal de Axel. Aquí podrás encontrar mis notas, proyectos y reflexiones sobre el mundo de la programación y el desarrollo web.
 author: Axel Sparta
 date: 2025-06-26
 ---
 
-# Bienvenida
+# Bienvenida blog número 1
 
 Quise crear un blog donde vaya guardando mis notas, proyectos y reflexiones sobre el mundo de la programación y el desarrollo web.
 También quiero ir añadiendo las tecnologías que voy aprendiendo y porque las uso.
