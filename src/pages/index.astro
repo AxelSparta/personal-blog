@@ -10,36 +10,46 @@ export const prerender = true; // indica que esta página es estática en caso d
 ---
 
 <Layout>
-	<main class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 mx-auto flex-1">
-		{
-			blogs.map((blog) => {
-				const { data, slug } = blog;
-				const { title, img, description, date, readtime } = data;
-				return (
-					<a
-						href={`/blog/${slug}`}
-						class="h-fit flex flex-col items-center bg-transparent border border-gray-200 rounded-lg shadow-s hover:bg-gray-100 dark:border-neutral-900 dark:hover:bg-neutral-950 shadow-md dark:shadow-neutral-950"
-					>
-						<img
-							class="w-full h-36 sm:h-48 object-cover rounded-t-lg"
-							src={img}
-							alt={`Imagen de portada del blog ${title}`}
-						/>
-						<div class="flex flex-col justify-between p-4 leading-normal">
-							<h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-								{title}
-							</h5>
-							<p class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
-								<span>{readtime} min</span>
-								<span>{date.toLocaleDateString()}</span>
-							</p>
-							<p class="mb-3 text-sm font-normal text-gray-800 dark:text-gray-200 prose">
-								{description}
-							</p>
-						</div>
-					</a>
-				);
-			})
-		}
+	<main class="p-4 mx-auto flex-1">
+		<div class="w-fit mx-auto mb-4 flex gap-4">
+			<img src="/yo.jpg" alt="Axel Sparta" class="w-24 h-24 rounded-full object-cover">
+			<div class="prose dark:prose-invert">
+				<h1>Hola soy Axel Sparta, bienvenido a mi blog</h1>
+				<p>Soy desarrollador web full stack con experiencia en React, Next.js, Node.js y más. En este blog voy a compartir mis notas, proyectos y reflexiones sobre el mundo de la programación y el desarrollo web.</p>
+			</div>
+		</div>
+		<hr class="my-4 border-gray-300 dark:border-neutral-900"/>
+		<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+			{
+				blogs.map((blog) => {
+					const { data, slug } = blog;
+					const { title, img, description, date, readtime } = data;
+					return (
+						<a
+							href={`/blog/${slug}`}
+							class="h-fit flex flex-col items-center bg-transparent border border-gray-200 rounded-lg shadow-s hover:bg-gray-100 dark:border-neutral-900 dark:hover:bg-neutral-950 shadow-md dark:shadow-neutral-950"
+						>
+							<img
+								class="w-full h-36 sm:h-48 object-cover rounded-t-lg"
+								src={img}
+								alt={`Imagen de portada del blog ${title}`}
+							/>
+							<div class="flex flex-col justify-between p-4 leading-normal">
+								<h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+									{title}
+								</h5>
+								<p class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
+									<span>{readtime} min</span>
+									<span>{date.toLocaleDateString()}</span>
+								</p>
+								<p class="mb-3 text-sm font-normal text-gray-800 dark:text-gray-200 prose">
+									{description}
+								</p>
+							</div>
+						</a>
+					);
+				})
+			}
+		</div>
 	</main>
 </Layout>

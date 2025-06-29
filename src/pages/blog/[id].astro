@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const blogs = await getCollection("blogs");
+  return blogs.map((blog) => ({
+    params: { id: blog.slug },
+    props: { blog },
+  }));
+}
+
+const { blog } = Astro.props;
+if (!blog) return Astro.redirect("/");
+const { data } = blog;
+const { img, readtime, date, title } = data;
+const { Content } = await render(blog);
+---
+
+<Layout>
+  <main class="flex-1 p-4 prose mx-auto dark:prose-invert">
+    <!-- IMAGEN DE PORTADA CON FECHA Y TIEMPO DE LECTURA -->
+    <img src={img} alt={title} class="h-64 w-full object-cover" />
+    <Content />
+  </main>
+</Layout>
