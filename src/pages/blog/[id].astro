@@ -18,7 +18,9 @@ const { Content } = await render(blog);
 ---
 
 <Layout>
-  <main class="flex-1 p-4 prose mx-auto dark:prose-invert">
+  <main
+    class="prose-neutral max-w-none flex-1 p-4 prose prose-sm sm:prose-base lg:prose-lg prose- mx-auto dark:prose-invert"
+  >
     <!-- IMAGEN DE PORTADA CON FECHA Y TIEMPO DE LECTURA -->
     <img src={img} alt={title} class="h-64 w-full object-cover" />
     <Content />
