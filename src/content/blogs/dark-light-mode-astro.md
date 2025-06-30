@@ -2,7 +2,7 @@
 # FRONT MATTER: info extra que se puede poner dentro del md
 title: Modo claro y oscuro con Astro, Tailwind y ViewTransitions
 img: /dark-light-mode.webp
-readtime: 5
+readtime: 15
 description: En este blog explicaré cómo utilizar el modo claro y oscuro con Astro, Tailwind y ViewTransitions.
 author: Axel Sparta
 date: 2025-06-29

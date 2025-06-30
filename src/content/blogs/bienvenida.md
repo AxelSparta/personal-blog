@@ -1,6 +1,6 @@
 ---
 # FRONT MATTER: info extra que se puede poner dentro del md
-title: ¿Por qué elegí Astro para crear este post (y por qué tú también deberías considerarlo)?
+title: ¿Por qué elegí Astro para crear este blog (y por qué tú también deberías considerarlo)?
 img: /bienvenida.webp
 readtime: 7
 description: En este post explico porqué elegir Astro para crear tu página web.
