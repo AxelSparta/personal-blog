@@ -9,9 +9,17 @@ import "../styles/global.css";
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/notebook.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta property="og:title" content="Axel Sparta Blog" />
+		<meta
+			property="og:description"
+			content="Este es el blog de Axel Sparta donde podrás ver actualizaciones de lo que voy estudiando y voy a estudiar todas las semanas, también puedes ver proyectos y tutoriales creados por mi."
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://axel-sparta-blog.netlify.app/" />
+		<meta property="og:image" content="/page-image.png" />
 		<title>Axel Sparta Blog</title>
 		<meta
 			name="description"
@@ -24,11 +32,13 @@ import "../styles/global.css";
 		<ClientRouter />
 	</head>
 	<body class="text-slate-950 dark:text-slate-50">
-		<div
-			class="fixed top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)] dark:bg-neutral-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-		>
+		<div class="fixed left-0 top-0 -z-10 w-full h-full">
+			<div
+				class="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)] dark:bg-neutral-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+			>
+			</div>
 		</div>
-		<div class="container mx-auto flex flex-col min-h-screen max-w-4xl">
+		<div class="mx-auto flex flex-col max-w-4xl min-h-screen">
 			<Navbar />
 			<slot />
 			<Footer />
@@ -40,5 +50,10 @@ import "../styles/global.css";
 	html {
 		font-family: "Onest Variable", system-ui, sans-serif;
 		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
 	}
 </style>

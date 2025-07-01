@@ -18,11 +18,17 @@ const { Content } = await render(blog);
 ---
 
 <Layout>
-  <main
-    class="prose-neutral max-w-none flex-1 p-4 prose prose-sm sm:prose-base lg:prose-lg prose- mx-auto dark:prose-invert"
-  >
+  <main class="flex-1 p-4 mx-auto max-w-screen">
     <!-- IMAGEN DE PORTADA CON FECHA Y TIEMPO DE LECTURA -->
     <img src={img} alt={title} class="h-64 w-full object-cover" />
-    <Content />
+    <div class="flex justify-between text-sm text-gray-800 dark:text-gray-400 py-5">
+      <p>{readtime} min</p>
+      <p>{date.toLocaleDateString()}</p>
+    </div>
+    <div
+      class="prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none"
+    >
+      <Content />
+    </div>
   </main>
 </Layout>
