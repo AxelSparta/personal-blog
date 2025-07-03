@@ -3,6 +3,8 @@ import { ClientRouter } from "astro:transitions";
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,7 +22,7 @@ import "../styles/global.css";
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://axel-sparta-blog.netlify.app/" />
 		<meta property="og:image" content="/page-image.png" />
-		<title>Axel Sparta Blog</title>
+		<title>{title ?? "Axel Sparta Blog"}</title>
 		<meta
 			name="description"
 			content="Este es el blog de Axel Sparta donde podrás ver actualizaciones de lo que voy estudiando y voy a estudiar todas las semanas, también puedes ver proyectos y tutoriales creados por mi."
