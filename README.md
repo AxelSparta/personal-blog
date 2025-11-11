@@ -2,7 +2,7 @@
 
 Este es mi blog personal donde escribo sobre desarrollo web, tecnologías y mis proyectos. Está construido con [Astro](https://astro.build) y usando Tailwind CSS para los estilos.
 
-> 🧑‍💻 Deploy: [axel-sparta-blog.netlify.app](https://axel-sparta-blog.netlify.app/)
+> Deploy: [axel-sparta-blog.netlify.app](https://axel-sparta-blog.netlify.app/)
 
 ---
 
