@@ -17,7 +17,7 @@ MVC, siglas de **Modelo-Vista-Controlador**, es un patrón de diseño de softwar
 
 Este patrón mejora la organización, el mantenimiento y la reutilización del código en aplicaciones, especialmente en el desarrollo web dinámico.
 
-![Esquema patrón MVC](/public/mvc-esquema.png)
+![Esquema patrón MVC](/mvc-esquema.png)
 
 ## ¿Cómo aplicarlo en Nodejs?
 
