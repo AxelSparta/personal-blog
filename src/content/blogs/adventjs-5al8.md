@@ -66,7 +66,7 @@ function timeUntilTakeOff(fromTime, takeOffTime) {
   return Math.floor(differenceMs / 1000)
 }
 
-// SOLUCIÓN IA (sólo fue más concisa con el return implícito):
+// SOLUCIÓN IA:
 function timeUntilTakeOff(fromTime: string, takeOffTime: string): number {
   const parseElfTimeToSeconds = (time: string): number => {
     const match = time.match(
