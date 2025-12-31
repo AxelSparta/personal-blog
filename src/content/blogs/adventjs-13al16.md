@@ -4,7 +4,7 @@ img: /adventjs.jpeg
 readtime: 15
 description: En este post explicaré la resolución de los retos de AdventJS 2025 retos 13 al 16.
 author: Axel Sparta
-date: 2025-12-22
+date: 2025-12-28
 ---
 
 # Resolución de retos de AdventJS (retos 13 al 16)
