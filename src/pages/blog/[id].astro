@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
+import BackToTop from "../../components/BackToTop.astro";
 
 export async function getStaticPaths() {
   const blogs = await getCollection("blogs");
@@ -14,7 +16,7 @@ const { blog } = Astro.props;
 if (!blog) return Astro.redirect("/");
 const { data } = blog;
 const { img, readtime, date, title } = data;
-const { Content } = await render(blog);
+const { Content, headings } = await render(blog);
 ---
 
 <Layout title={title}>
@@ -24,10 +26,16 @@ const { Content } = await render(blog);
       <p>{readtime} min</p>
       <p>{date.toLocaleDateString()}</p>
     </div>
-    <div
-      class="prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none"
-    >
-      <Content />
+    
+    <div class="flex flex-col gap-8">
+      <TableOfContents headings={headings} />
+      
+      <div
+        class="prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none w-full"
+      >
+        <Content />
+      </div>
     </div>
+    <BackToTop />
   </main>
 </Layout>

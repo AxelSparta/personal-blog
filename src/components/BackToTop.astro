@@ -1,0 +1,57 @@
+---
+---
+<button
+  id="back-to-top"
+  class="fixed bottom-8 right-8 p-3 bg-blue-600 dark:bg-blue-500 text-white rounded-full shadow-lg opacity-0 invisible translate-y-4 transition-all duration-300 hover:bg-blue-700 dark:hover:bg-blue-600 hover:scale-110 active:scale-95 z-50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-neutral-950"
+  aria-label="Volver arriba"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="m18 15-6-6-6 6"></path>
+  </svg>
+</button>
+
+<script>
+  function initBackToTop() {
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    if (!backToTopBtn) return;
+
+    const toggleVisible = () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+        backToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-4');
+        backToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
+      }
+    };
+
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    };
+
+    window.addEventListener('scroll', toggleVisible);
+    backToTopBtn.addEventListener('click', scrollToTop);
+
+    // Initial check
+    toggleVisible();
+  }
+
+  // Runs on initial load
+  initBackToTop();
+  // Runs on every navigation with View Transitions
+  document.addEventListener('astro:page-load', initBackToTop);
+</script>

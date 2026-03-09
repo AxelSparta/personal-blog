@@ -1,0 +1,142 @@
+---
+interface Props {
+  headings: {
+    depth: number;
+    slug: string;
+    text: string;
+  }[];
+}
+
+const { headings } = Astro.props;
+
+// Filter headings if needed, e.g., only depths 2 and 3
+const filteredHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
+---
+
+{
+  filteredHeadings.length > 0 && (
+    <nav class="toc-container p-6 bg-gray-50/50 dark:bg-neutral-900/50 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-neutral-800 w-full">
+      <details open>
+        <summary class="font-bold text-xl mb-2 cursor-pointer list-none flex items-center gap-3 text-blue-600 dark:text-blue-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="icon-toc"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+          Tabla de contenido
+        </summary>
+        <ul class="toc-list mt-6 space-y-1 border-l-2 border-gray-200 dark:border-neutral-800 max-h-[400px] overflow-y-auto pr-4">
+          {filteredHeadings.map((heading) => (
+            <li
+              class={`toc-item pl-4 ${
+                heading.depth === 3 ? "ml-4 text-sm" : "text-base font-semibold"
+              }`}
+            >
+              <a
+                href={`#${heading.slug}`}
+                class="block py-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </nav>
+  )
+}
+
+<script>
+  function initTOC() {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -80% 0px',
+      threshold: 1.0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute('id');
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.toc-item a').forEach((a) => {
+            a.classList.remove('text-blue-600', 'dark:text-blue-400', 'font-bold', 'translate-x-1');
+            if (a.getAttribute('href') === `#${id}`) {
+              a.classList.add('text-blue-600', 'dark:text-blue-400', 'font-bold', 'translate-x-1');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    // Only observe headings inside the blog content
+    const content = document.querySelector('.prose');
+    if (content) {
+      content.querySelectorAll('h2, h3').forEach((section) => {
+        observer.observe(section);
+      });
+    }
+  }
+
+  // Runs on initial load
+  initTOC();
+  // Runs on every navigation with View Transitions
+  document.addEventListener('astro:page-load', initTOC);
+</script>
+
+<style>
+  .toc-container {
+    transition: all 0.3s ease;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Custom Scrollbar Styles */
+  .toc-list::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .toc-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .toc-list::-webkit-scrollbar-thumb {
+    background: #d1d5db; /* gray-300 */
+    border-radius: 10px;
+  }
+
+  .dark .toc-list::-webkit-scrollbar-thumb {
+    background: #3f3f46; /* neutral-700 */
+  }
+
+  .toc-list::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af; /* gray-400 */
+  }
+
+  .dark .toc-list::-webkit-scrollbar-thumb:hover {
+    background: #52525b; /* neutral-600 */
+  }
+
+  /* Firefox Scrollbar */
+  .toc-list {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
+  }
+
+  .dark .toc-list {
+    scrollbar-color: #3f3f46 transparent;
+  }
+
+  .toc-item a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border-radius: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .toc-item a:hover {
+    background-color: rgba(37, 99, 235, 0.05); /* blue-600/5 */
+    transform: translateX(6px);
+  }
+
+  .dark .toc-item a:hover {
+    background-color: rgba(96, 165, 250, 0.05); /* blue-400/5 */
+  }
+</style>
