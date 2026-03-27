@@ -4,7 +4,7 @@ img: /nextjs.jpg
 readtime: 10
 description: En este post explico los tipos de renderizados de Next.js y cómo funciona el caché.
 author: Axel Sparta
-date: 2026-03-22
+date: 2026-03-26
 ---
 
 # 🧠 Domina el Rendering y el Caché en Next.js
