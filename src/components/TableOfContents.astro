@@ -9,8 +9,8 @@ interface Props {
 
 const { headings } = Astro.props;
 
-// Filter headings if needed, e.g., only depths 2 and 3
-const filteredHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
+// Filter headings if needed, e.g., only depths 1, 2 and 3
+const filteredHeadings = headings.filter((h) => h.depth >= 1 && h.depth <= 3);
 ---
 
 {
@@ -25,7 +25,7 @@ const filteredHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
           {filteredHeadings.map((heading) => (
             <li
               class={`toc-item pl-4 ${
-                heading.depth === 3 ? "ml-4 text-sm" : "text-base font-semibold"
+                heading.depth === 1 ? "text-lg font-bold" : heading.depth === 2 ? "ml-2 text-base font-semibold" : "ml-6 text-sm"
               }`}
             >
               <a
@@ -67,7 +67,7 @@ const filteredHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
     // Only observe headings inside the blog content
     const content = document.querySelector('.prose');
     if (content) {
-      content.querySelectorAll('h2, h3').forEach((section) => {
+      content.querySelectorAll('h1, h2, h3').forEach((section) => {
         observer.observe(section);
       });
     }
