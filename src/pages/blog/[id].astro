@@ -15,13 +15,18 @@ export async function getStaticPaths() {
 const { blog } = Astro.props;
 if (!blog) return Astro.redirect("/");
 const { data } = blog;
-const { img, readtime, date, title } = data;
+const { img, readtime, date, title, description } = data;
 const { Content, headings } = await render(blog);
 ---
 
-<Layout title={title}>
+<Layout
+  title={title}
+  description={description}
+  image={img}
+  type="article"
+>
   <main class="flex-1 p-4 mx-auto w-full">
-    <img src={img} alt={title} class="h-64 w-full object-cover" />
+    <img src={img} alt={title} class="mx-auto w-full max-w-xl object-cover rounded-lg shadow-lg object-top" />
     <div class="flex justify-between text-sm text-gray-800 dark:text-gray-400 py-5">
       <p>{readtime} min</p>
       <p>{date.toLocaleDateString()}</p>
